@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+
 from datetime import datetime, timedelta
+
+import matplotlib.pyplot as plt
 
 # -----------------------------
 # 页面配置
@@ -484,13 +487,27 @@ correlation_matrix = pd.DataFrame({
 st.markdown("##### Feature Correlation Matrix")
 corr_col1, corr_col2 = st.columns([2, 1])
 
+
 with corr_col1:
-    # 创建美观的关联矩阵显示
-    st.dataframe(
-        correlation_matrix.style.background_gradient(cmap='Blues', axis=None)
-        .format('{:.2f}'),
-        height=200
-    )
+    # 创建简单的关联矩阵显示
+    fig, ax = plt.subplots(figsize=(6, 4))
+    im = ax.imshow(correlation_matrix.values, cmap='Blues', vmin=-1, vmax=1)
+    
+    # 设置标签
+    ax.set_xticks(range(len(correlation_matrix.columns)))
+    ax.set_yticks(range(len(correlation_matrix.columns)))
+    ax.set_xticklabels(correlation_matrix.columns, rotation=45, ha='right')
+    ax.set_yticklabels(correlation_matrix.columns)
+    
+    # 添加数值标签
+    for i in range(len(correlation_matrix.columns)):
+        for j in range(len(correlation_matrix.columns)):
+            text = ax.text(j, i, f'{correlation_matrix.iloc[i, j]:.2f}',
+                          ha='center', va='center', color='white')
+    
+    ax.set_title('Feature Correlation Matrix')
+    fig.colorbar(im)
+    st.pyplot(fig)
 
 with corr_col2:
     st.markdown("""
@@ -501,7 +518,6 @@ with corr_col2:
     
     *High correlation between health and operational features suggests systemic issues.*
     """)
-
 # -----------------------------
 # 特征阈值说明
 # -----------------------------
@@ -625,11 +641,11 @@ with architecture_col1:
     │              RISK MAPPING LAYER                     │
     ├─────────────────────────────────────────────────────┤
     │                                                     │
-    │  Input Features → Rule Engine → Dual Risk Outputs  │
+    │  Input Features → Rule Engine → Dual Risk Outputs   │
     │                                                     │
-    │  1. Trend Strength       ↓      Health Risk        │
-    │  2. Signal Diversity     ↓      Education Risk     │
-    │  3. Operational Stress   ↓                         │
+    │  1. Trend Strength       ↓      Health Risk         │
+    │  2. Signal Diversity     ↓      Education Risk      │
+    │  3. Operational Stress   ↓                          │
     │                                                     │
     └─────────────────────────────────────────────────────┘
     ```
