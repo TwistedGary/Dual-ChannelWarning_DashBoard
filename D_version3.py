@@ -4,7 +4,7 @@ import numpy as np
 
 from datetime import datetime, timedelta
 
-import matplotlib.pyplot as plt
+
 
 # -----------------------------
 # 页面配置
@@ -489,25 +489,34 @@ corr_col1, corr_col2 = st.columns([2, 1])
 
 
 with corr_col1:
-    # 创建简单的关联矩阵显示
-    fig, ax = plt.subplots(figsize=(6, 4))
-    im = ax.imshow(correlation_matrix.values, cmap='Blues', vmin=-1, vmax=1)
+    # 创建颜色编码的简单显示
+    st.markdown("**Correlation Matrix:**")
     
-    # 设置标签
-    ax.set_xticks(range(len(correlation_matrix.columns)))
-    ax.set_yticks(range(len(correlation_matrix.columns)))
-    ax.set_xticklabels(correlation_matrix.columns, rotation=45, ha='right')
-    ax.set_yticklabels(correlation_matrix.columns)
-    
-    # 添加数值标签
-    for i in range(len(correlation_matrix.columns)):
-        for j in range(len(correlation_matrix.columns)):
-            text = ax.text(j, i, f'{correlation_matrix.iloc[i, j]:.2f}',
-                          ha='center', va='center', color='white')
-    
-    ax.set_title('Feature Correlation Matrix')
-    fig.colorbar(im)
-    st.pyplot(fig)
+    # 为每个单元格创建颜色
+    for i, row_name in enumerate(correlation_matrix.index):
+        cols = st.columns(len(correlation_matrix.columns))
+        for j, (col, col_name) in enumerate(zip(cols, correlation_matrix.columns)):
+            value = correlation_matrix.iloc[i, j]
+            
+            # 根据值设置颜色
+            if value > 0.7:
+                color = "🟦"  # 深蓝 - 强正相关
+            elif value > 0.3:
+                color = "🟩"  # 浅蓝 - 中等正相关  
+            elif value < -0.7:
+                color = "🟥"  # 深红 - 强负相关
+            elif value < -0.3:
+                color = "🟧"  # 橙色 - 中等负相关
+            else:
+                color = "⬜"  # 白色 - 弱相关
+            
+            with col:
+                st.markdown(f"{color} **{value:.2f}**")
+                if i == 0:  # 只在第一行显示列名
+                    st.caption(col_name)
+        
+        # 显示行名
+        st.markdown(f"**{row_name}**")
 
 with corr_col2:
     st.markdown("""
