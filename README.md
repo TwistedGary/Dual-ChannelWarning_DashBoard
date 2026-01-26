@@ -252,7 +252,6 @@ pip install -r requirements-dev.txt  # 开发依赖
 ## 📚 相关文档
 
 ### 学术基础
-- [研究报告全文](docs/research_paper.pdf)
 - [系统架构说明](docs/architecture.md)
 - [用户测试报告](docs/user_testing.md)
 
@@ -285,14 +284,12 @@ pip install -r requirements-dev.txt  # 开发依赖
 ## 🙏 致谢
 
 ### 学术指导
-- 研究论文合作者
 - 参与测试的学校团队
-- 提供反馈的教育专家
 
 ### 技术贡献
 - Streamlit 团队提供的优秀框架
 - 开源社区的各种工具和库
-- 所有代码贡献者
+- CTB Poise团队成员
 
 ### 特别感谢
 感谢所有参与系统测试和反馈的教育工作者，你们的宝贵意见让这个工具更加实用和有效。
