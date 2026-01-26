@@ -3,8 +3,8 @@
 
 ## 📋 项目概述
 
-**校园双预警决策支持系统**是一个专门为高中校园设计的传染病早期预警和决策支持工具。系统基于学术研究《Designing a Dual-Warning Early Alert System to Support Campus Preparedness for Common Infectious Diseases in High Schools》开发，旨在帮助学校管理者在不确定条件下做出平衡健康保护和教育连续性的决策。
-
+**校园双预警决策支持系统**是一个专门为高中校园设计的传染病早期预警和决策支持工具。系统基于研究调查和走访提出并开发的在线健康举措，旨在帮助学校管理者在不确定条件下做出平衡健康保护和教育连续性的决策。
+[Dual-Warning Decision Dashboard](dual-warningdashboard-g5hqrjvbrt8uq2draqouff.streamlit.app)
 ### 🎯 核心理念
 - **支持讨论而非自动决策** - 系统提供结构化信息，促进团队讨论
 - **透明化风险评估** - 所有计算逻辑可见，避免黑箱操作
