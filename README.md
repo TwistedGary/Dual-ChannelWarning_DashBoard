@@ -252,7 +252,7 @@ pip install -r requirements-dev.txt  # 开发依赖
 ## 📚 相关文档
 
 ### 学术基础
-- [系统架构说明](docs/architecture.md)
+- [系统架构说明](main/architecture.md)
 - [用户测试报告](docs/user_testing.md)
 
 ### 技术文档
