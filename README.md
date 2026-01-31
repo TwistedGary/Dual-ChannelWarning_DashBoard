@@ -1,5 +1,5 @@
 
-# 🏫 校园双预警决策支持系统 - Campus Dual-Warning Decision Dashboard
+# 🏫 校园双预警决策支持系统 - Campus Dual-Channel Warning Decision Dashboard
 
 ## 📋 项目概述
 
