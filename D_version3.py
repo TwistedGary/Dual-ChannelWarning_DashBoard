@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 # 页面配置
 # -----------------------------
 st.set_page_config(
-    page_title="Dual-Warning Decision Dashboard",
+    page_title="Dual-Channel Warning Decision Dashboard",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -56,7 +56,7 @@ st.markdown("""
 # -----------------------------
 # 标题和说明
 # -----------------------------
-st.markdown('<div class="main-header">Campus Dual-Warning Decision Dashboard</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header">Campus Dual-Channel Warning Decision Dashboard</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-header">An explainable decision-support prototype for campus infectious disease preparedness</div>', unsafe_allow_html=True)
 
 # 系统架构说明
